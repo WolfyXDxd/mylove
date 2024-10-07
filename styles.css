@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #ffe6e6, #ffcccc); /* Degradado suave */
+    color: #333;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Corazones flotantes animados */
+.heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ff4d4d;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-45deg);
+    animation: floatUp 10s infinite ease-in-out;
+}
+
+.heart::after, .heart::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -25px;
+    left: 0;
+}
+
+.heart::after {
+    left: 25px;
+    top: 0;
+}
+
+/* Varias posiciones para los corazones */
+.heart:nth-child(1) { top: 10%; left: 20%; animation-duration: 12s; }
+.heart:nth-child(2) { top: 30%; left: 40%; animation-duration: 9s; }
+.heart:nth-child(3) { top: 60%; left: 70%; animation-duration: 11s; }
+.heart:nth-child(4) { top: 80%; left: 10%; animation-duration: 14s; }
+.heart:nth-child(5) { top: 50%; left: 90%; animation-duration: 13s; }
+
+/* Animación para que los corazones floten */
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-100px) rotate(-45deg); opacity: 0; }
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: #ff4d4d;
+}
+
+/* Estilos del carrusel */
+.carousel {
+    width: 90%; /* Ajuste para móvil */
+    max-width: 400px; /* Máximo ancho */
+    margin: 20px auto;
+    overflow: hidden;
+    border: 2px solid #ff4d4d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Imágenes del carrusel */
+.slide img {
+    width: auto;
+    max-width: 100%; /* Asegúrate de que la imagen no exceda el ancho del contenedor */
+    height: auto;
+    max-height: 300px; /* Ajusta según sea necesario */
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Texto debajo de las fotos */
+.slide p {
+    margin: 15px 10px; /* Ajuste para pantallas pequeñas */
+    font-size: 1em; /* Ajustar tamaño de texto */
+    color: #ff6666;
+}
+footer {
+    margin-top: 40px;
+    color: #ff4d4d;
+}
+
+footer p {
+    font-size: 1.5em;
+}
+
+/* Estilo adicional de corazones en el fondo */
+body::before {
+    content: '❤️❤️❤️';
+    position: absolute;
+    font-size: 8em;
+    color: rgba(255, 77, 77, 0.2);
+    left: 50%;
+    top: 10%;
+    transform: translateX(-50%);
+    animation: float 6s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-20px); }
+}
+
+.card {
+    perspective: 1000px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+    cursor: pointer;
+    overflow: visible; /* Ensures the content inside won't be cut off */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    position: relative;
+    width: 100%;
+    padding: 20px; /* Ensures more spacing inside the card */
+    box-sizing: border-box; /* Ensures padding is included in total width */
+    backface-visibility: hidden;
+    border: 2px solid #ff4d4d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.card-front {
+    background-color: white; /* Fondo blanco para la parte frontal */
+}
+
+.card-back {
+    background-color: #ffcccc;
+    transform: rotateY(180deg);
+    overflow: visible; /* Prevents text cut-off */
+}
+
+p {
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* Ensures long words break properly */
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Gira la carta al hacer hover */
+}
+
+.card-back p, .card-front p {
+    margin: 0; /* Quita márgenes */
+    padding: 5px; /* Espacio alrededor del texto */
+}
